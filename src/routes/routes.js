@@ -3,7 +3,8 @@ import textController from "../text-controllers/controller.js";
 
 const routes = express.Router();
 routes.post('/api/prompt', textController.inputText)
-routes.post('/api/receive', textController.receiveMessage);
+.post('/api/receive', textController.receiveMessage)
+.post('/api/wppreceive', textController.wppReceiveMsg)
 
 export default routes;
 

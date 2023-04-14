@@ -25,12 +25,24 @@ class textController {
         const {to, body} = req.body;
         console.log(to, body)
         try {
-            const result = await whatsappMessage(`whatsapp:${to}`, body);
-            console.log(result);
+            await whatsappMessage(`whatsapp:${to}`, body);
             res.status(200).json({sucess:true, body})
         } catch (error) {
             res.status(500).json({sucess:false, error})
         }   
+    }
+
+    static wppReceiveMsg = async (req, res) =>{
+        const twilioreq = req.body;
+        const message = twilioreq.Body;
+        const to = twilioreq.From;
+
+        try {
+            await whatsappMessage(to, message)
+        res.status(200).json({sucess:true, message})
+        } catch (error) {
+            res.status(500).json({sucess:false, error})
+        }
     }
     
 }
