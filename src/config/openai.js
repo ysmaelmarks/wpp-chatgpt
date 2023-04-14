@@ -11,7 +11,7 @@ const openai = new OpenAIApi(openaiconfig);
 export const Completion = async(text) =>{
     try {
         const textCompletion = await openai.createChatCompletion({
-            model:'text-davinci-003',
+            model:'gpt-3.5-turbo',
             messages: [{role:"user", content: text}]
         })
         return textCompletion.data.choices[0].message.content;
