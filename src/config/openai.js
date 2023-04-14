@@ -2,26 +2,21 @@ import { Configuration, OpenAIApi } from "openai";
 import dotenv from 'dotenv'
 dotenv.config();
 
-class openai{
-    static configuration(){
-        const configuration = new Configuration({
-            apiKey: process.env.OPEN_AI_KEY,
-        });
+const openaiconfig = new Configuration({
+    apiKey: process.env.OPEN_AI_KEY
+})
 
-        return new OpenAIApi(configuration);
-    }
+const openai = new OpenAIApi(openaiconfig);
 
-    static completion({prompt}){
-        return{
-            model: "text-davinci-003",
-            prompt: `${prompt}`,
-            temperature: 0,
-            max_tokens:3000,
-            top_p:1,
-            frequency_penalty:0,
-            presence_penalty:0,
-        }
+export const Completion = async(text) =>{
+    try {
+        const textCompletion = await openai.createChatCompletion({
+            model:'gpt-3.5-turbo',
+            messages: [{role:"user", content: text}]
+        })
+        return textCompletion.data.choices[0].message.content;
+    } catch (error) {
+        console.log(error)
+        return;
     }
 }
-
-export default openai;

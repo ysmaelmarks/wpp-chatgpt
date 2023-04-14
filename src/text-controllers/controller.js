@@ -1,4 +1,4 @@
-import openai from "../config/openai.js";
+import openai, { Completion } from "../config/openai.js";
 import userText from "../text-models/model.js";
 import { whatsappMessage } from "../config/twilio.js"
 
@@ -38,12 +38,9 @@ class textController {
         const to = twilioreq.From;
 
         try {
-            const API = openai.configuration
-            const resp = await API.createCompletion(
-                openai.completion(message)
-            )
+            const resp = await Completion(message);
             await whatsappMessage(to, resp)
-            res.status(200).json({sucess:true, resp})
+            res.status(200).json({sucess:true, message})
 
         } catch (error) {
             res.status(500).json({sucess:false, error})
