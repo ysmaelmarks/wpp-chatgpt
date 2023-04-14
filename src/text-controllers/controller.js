@@ -14,7 +14,7 @@ class textController {
             )
             return res.status(200).json({
                 sucess: true,
-                data: resp.data.choices[0].text,
+                data: resp.data.choices[0].text
             })
         } catch (error) {
             return res.status(400).send(error)
@@ -38,12 +38,18 @@ class textController {
         const to = twilioreq.From;
 
         try {
-            await whatsappMessage(to, message)
-        res.status(200).json({sucess:true, message})
+            const API = openai.configuration
+            const resp = await API.createCompletion(
+                openai.completion(message)
+            )
+            await whatsappMessage(to, resp)
+            res.status(200).json({sucess:true, resp})
+
         } catch (error) {
             res.status(500).json({sucess:false, error})
         }
     }
+
     
 }
 

@@ -1,4 +1,6 @@
 import { Configuration, OpenAIApi } from "openai";
+import dotenv from 'dotenv'
+dotenv.config();
 
 class openai{
     static configuration(){
