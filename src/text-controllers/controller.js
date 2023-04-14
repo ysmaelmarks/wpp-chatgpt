@@ -1,4 +1,4 @@
-import openai, { Completion } from "../config/openai.js";
+import { Completion } from "../config/openai.js";
 import userText from "../text-models/model.js";
 import { whatsappMessage } from "../config/twilio.js"
 
