@@ -12,7 +12,7 @@ Clone this repo and install the dependencies
 
 ```sh
 $ git clone https://github.com/ysmaelmarks/wpp-chatgpt
-$ cd gptwpp
+$ cd wpp-chatgpt
 $ npm install
 ```
 
