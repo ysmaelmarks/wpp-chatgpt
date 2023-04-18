@@ -6,6 +6,20 @@ The GPTWPP is an application built with Node.js, Express, Twilio, and OpenAI to 
 
 The goal of this project is to create a bridge between WhatsApp and ChatGPT, allowing users to interact with ChatGPT through text messages on WhatsApp. Through the Twilio API, user messages are forwarded to the GPTWPP server, which processes them and sends them to the OpenAI API to obtain ChatGPT responses. The responses are then sent back to users via Twilio.
 
+## Prerequisites
+
+Before you can use GPTWPP, you will need the following:
+
+- Twilio Account: You will need a Twilio account to send and receive messages via the Twilio API.
+You can sign up for a free account at https://www.twilio.com/try-twilio.
+Make sure to understand how Twilio works and obtain your Twilio Account SID, authentication token, and phone number.
+
+- OpenAI Account: You will need an OpenAI account to access the OpenAI API and make requests to ChatGPT.
+You can sign up for an account at https://www.openai.com/signup.
+Make sure to obtain your OpenAI API key, which will be used as an environment variable in the GPTWPP.
+
+- NGROK (for local testing): If you want to run the project locally for testing, you will need the NGROK application to expose your local server to the internet. Follow the installation instructions for NGROK at https://ngrok.com/docs and configure it properly.
+
 ## Installation
 
 Clone this repo and install the dependencies
