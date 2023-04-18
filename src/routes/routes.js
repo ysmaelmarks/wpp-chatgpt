@@ -1,10 +1,9 @@
 import express from "express";
-import textController from "../text-controllers/controller.js";
+import msgController from "../controllers/controller.js";
 
 const routes = express.Router();
-routes.post('/api/prompt', textController.inputText)
-.post('/api/receive', textController.receiveMessage)
-.post('/api/wppreceive', textController.wppReceiveMsg)
+    routes.post('/api/receive', msgController.sendMessage)
+        .post('/api/wppreceive', msgController.wppMsgOpenAI);
 
 export default routes;
 

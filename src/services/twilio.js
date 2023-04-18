@@ -8,15 +8,15 @@ const phoneNumber = process.env.TWILIO_PHONE_NUMBER;
 
 const twilioClient = twilio(accountSid, authToken);
 
-export const whatsappMessage = async(to, body) =>{
+export const whatsappMessage = async (to, body) => {
     try {
         await twilioClient.messages.create({
             to: to,
             from: phoneNumber,
             body: body
         })
-        .then(message => console.log(message.sid))
+            .then(message => console.log(message.sid))
     } catch (error) {
-        console.error(`error sending msg to: ${to}, your msg: ${body}, ${error}`)
+        console.log(error)
     }
 }
